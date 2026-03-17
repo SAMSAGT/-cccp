@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="ky">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Улуу Ата Мекендик Согуш Каармандары</title>
+<link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Philosopher:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --army-black: #0e0f0a;
+    --olive-dark: #1c2410;
+    --olive-mid: #2d3a1e;
+    --olive-light: #4a5a2a;
+    --khaki: #8b8b6b;
+    --khaki-light: #b0a87a;
+    --soviet-red: #c8102e;
+    --soviet-red-dark: #8b0a1e;
+    --gold: #d4af37;
+    --gold-dark: #a07820;
+    --cream: #e8dfc0;
+    --aged: #c4b99a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--army-black);
+    color: var(--cream);
+    font-family: 'Philosopher', serif;
+    overflow-x: hidden;
+  }
+
+  /* ── CAMOUFLAGE BACKGROUND ── */
+  .camo-bg {
+    background-color: var(--olive-dark);
+    background-image:
+      radial-gradient(ellipse 80px 60px at 10% 20%, #1e2a0e88 0%, transparent 70%),
+      radial-gradient(ellipse 60px 90px at 35% 55%, #2d3a1e99 0%, transparent 70%),
+      radial-gradient(ellipse 100px 50px at 65% 15%, #3a4a1888 0%, transparent 70%),
+      radial-gradient(ellipse 50px 80px at 80% 70%, #1a240a88 0%, transparent 70%),
+      radial-gradient(ellipse 90px 40px at 50% 85%, #384818aa 0%, transparent 70%),
+      radial-gradient(ellipse 70px 70px at 20% 75%, #283010aa 0%, transparent 70%),
+      radial-gradient(ellipse 120px 60px at 90% 40%, #1e2c0c88 0%, transparent 70%);
+  }
+
+  /* ── GRAIN OVERLAY ── */
+  .grain::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.4;
+  }
+
+  /* ── PAGE LOAD FADE ── */
+  @keyframes fadeFromBlack {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  body { animation: fadeFromBlack 1.8s ease-out forwards; }
+
+  /* ══════════════════════════════════
+     NAVIGATION
+  ══════════════════════════════════ */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: linear-gradient(to bottom, rgba(10,12,6,0.97), rgba(10,12,6,0.85));
+    border-bottom: 2px solid var(--soviet-red);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 56px;
+    backdrop-filter: blur(4px);
+  }
+  .nav-logo {
+    font-family: 'Special Elite', cursive;
+    color: var(--gold);
+    font-size: 1rem;
+    letter-spacing: 0.15em;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .nav-star { color: var(--soviet-red); animation: starFlicker 3s infinite; }
+  .nav-links { display: flex; gap: 1.8rem; }
+  .nav-links a {
+    font-family: 'Special Elite', cursive;
+    color: var(--khaki-light);
+    text-decoration: none;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--soviet-red); }
+
+  /* ══════════════════════════════════
+     HERO SECTION
+  ══════════════════════════════════ */
+  #hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    padding: 6rem 2rem 4rem;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(10,12,6,0.3) 0%, rgba(10,12,6,0.7) 60%, rgba(10,12,6,1) 100%),
+      repeating-linear-gradient(
+        45deg,
+        #1c2410 0px, #1c2410 20px,
+        #243018 20px, #243018 40px,
+        #1a2010 40px, #1a2010 60px,
+        #2d3a1e 60px, #2d3a1e 80px
+      );
+    z-index: 0;
+  }
+
+  .soldier-silhouette {
+    position: absolute;
+    bottom: 0;
+    right: 5%;
+    width: 260px;
+    height: 480px;
+    opacity: 0.12;
+    z-index: 1;
+  }
+
+  .hero-content { position: relative; z-index: 2; max-width: 900px; }
+
+  .years-banner {
+    display: inline-block;
+    background: var(--soviet-red);
+    color: #fff;
+    font-family: 'Special Elite', cursive;
+    font-size: 1.1rem;
+    letter-spacing: 0.4em;
+    padding: 0.4rem 2rem;
+    margin-bottom: 1.5rem;
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+  }
+
+  .hero-star {
+    font-size: 3rem;
+    color: var(--soviet-red);
+    animation: starFlicker 2.5s infinite;
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  @keyframes starFlicker {
+    0%, 100% { opacity: 1; text-shadow: 0 0 20px var(--soviet-red); }
+    30% { opacity: 0.7; text-shadow: 0 0 5px var(--soviet-red); }
+    60% { opacity: 0.9; text-shadow: 0 0 30px var(--soviet-red), 0 0 60px var(--soviet-red-dark); }
+    80% { opacity: 0.6; }
+  }
+
+  .hero-title {
+    font-family: 'Special Elite', cursive;
+    font-size: clamp(2.2rem, 6vw, 4.5rem);
+    color: var(--cream);
+    letter-spacing: 0.05em;
+    line-height: 1.15;
+    text-shadow: 0 2px 20px rgba(0,0,0,0.8), 0 0 60px rgba(200,16,46,0.2);
+    animation: telegramType 1.5s ease-out 0.3s both;
+  }
+
+  .hero-subtitle {
+    font-family: 'Philosopher', serif;
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    color: var(--khaki-light);
+    margin-top: 1.2rem;
+    letter-spacing: 0.08em;
+    font-style: italic;
+    animation: telegramType 1.5s ease-out 0.8s both;
+  }
+
+  .hero-quote {
+    margin-top: 2rem;
+    font-family: 'Special Elite', cursive;
+    font-size: 1rem;
+    color: var(--gold);
+    letter-spacing: 0.15em;
+    border-top: 1px solid rgba(212,175,55,0.3);
+    border-bottom: 1px solid rgba(212,175,55,0.3);
+    padding: 0.8rem 2rem;
+    display: inline-block;
+    animation: telegramType 1.5s ease-out 1.2s both;
+  }
+
+  @keyframes telegramType {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--khaki);
+    font-family: 'Special Elite', cursive;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    animation: bounce 2s infinite;
+  }
+  @keyframes bounce {
+    0%,100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(6px); }
+  }
+
+  /* ══════════════════════════════════
+     SECTION COMMON
+  ══════════════════════════════════ */
+  section { position: relative; }
+
+  .section-header {
+    text-align: center;
+    padding: 4rem 2rem 2rem;
+  }
+
+  .section-label {
+    font-family: 'Special Elite', cursive;
+    font-size: 0.7rem;
+    letter-spacing: 0.5em;
+    color: var(--soviet-red);
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 0.8rem;
+  }
+  .section-label::before, .section-label::after {
+    content: ''; flex: 1; max-width: 80px;
+    height: 1px; background: var(--soviet-red-dark);
+  }
+
+  .section-title {
+    font-family: 'Special Elite', cursive;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    color: var(--cream);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* RIFLE DIVIDER */
+  .rifle-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1.5rem 0;
+    opacity: 0.6;
+  }
+  .rifle-divider .line {
+    flex: 1; max-width: 200px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold-dark), transparent);
+  }
+
+  /* ══════════════════════════════════
+     INTRO SECTION
+  ══════════════════════════════════ */
+  #intro {
+    background: linear-gradient(180deg, var(--army-black) 0%, var(--olive-dark) 50%, var(--army-black) 100%);
+    padding: 3rem 2rem 5rem;
+  }
+  .intro-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .intro-text {
+    font-size: 1.1rem;
+    line-height: 1.9;
+    color: var(--aged);
+    margin-bottom: 1.5rem;
+  }
+  .intro-text strong { color: var(--gold); }
+  .intro-stats {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+    margin-top: 3rem;
+  }
+  .stat-item { text-align: center; }
+  .stat-num {
+    font-family: 'Special Elite', cursive;
+    font-size: 2.8rem;
+    color: var(--soviet-red);
+    display: block;
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    color: var(--khaki);
+    text-transform: uppercase;
+    margin-top: 0.3rem;
+  }
+
+  /* ══════════════════════════════════
+     HEROES GALLERY
+  ══════════════════════════════════ */
+  #heroes {
+    padding-bottom: 5rem;
+    background: var(--army-black);
+  }
+  .heroes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .hero-card {
+    background: linear-gradient(135deg, var(--olive-dark) 0%, #111608 100%);
+    border: 1px solid rgba(212,175,55,0.2);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: default;
+  }
+  .hero-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 40px rgba(200,16,46,0.25), 0 0 0 1px rgba(200,16,46,0.4);
+  }
+  .hero-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(to right, var(--soviet-red), var(--gold), var(--soviet-red));
+  }
+
+  .hero-photo {
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(145deg, #2a3018, #1a200e);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    filter: sepia(0.5) contrast(1.05);
+  }
+  .hero-photo-icon { width: 80px; height: 80px; opacity: 0.3; }
+  .hero-photo-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 50%, rgba(10,12,6,0.9) 100%);
+  }
+  .hero-medal {
+    position: absolute;
+    top: 10px; right: 10px;
+    width: 36px; height: 36px;
+  }
+
+  .hero-info { padding: 1.2rem 1.4rem 1.4rem; }
+  .hero-name {
+    font-family: 'Special Elite', cursive;
+    font-size: 1.15rem;
+    color: var(--gold);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.2rem;
+  }
+  .hero-years {
+    font-size: 0.75rem;
+    color: var(--soviet-red);
+    letter-spacing: 0.2em;
+    font-family: 'Special Elite', cursive;
+    margin-bottom: 0.8rem;
+  }
+  .hero-rank {
+    display: inline-block;
+    background: rgba(200,16,46,0.15);
+    border: 1px solid rgba(200,16,46,0.3);
+    color: var(--khaki-light);
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.6rem;
+    margin-bottom: 0.8rem;
+  }
+  .hero-bio {
+    font-size: 0.88rem;
+    color: var(--aged);
+    line-height: 1.7;
+  }
+  .hero-award {
+    margin-top: 1rem;
+    font-size: 0.75rem;
+    color: var(--gold);
+    font-style: italic;
+    border-left: 2px solid var(--gold-dark);
+    padding-left: 0.7rem;
+  }
+
+  /* ══════════════════════════════════
+     TIMELINE
+  ══════════════════════════════════ */
+  #timeline {
+    background: linear-gradient(180deg, var(--army-black) 0%, var(--olive-dark) 100%);
+    padding-bottom: 5rem;
+  }
+  .timeline-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+  }
+  .timeline-line {
+    position: absolute;
+    left: 50%; top: 0; bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--soviet-red), var(--gold), var(--soviet-red));
+    transform: translateX(-50%);
+  }
+  .timeline-item {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    position: relative;
+    align-items: flex-start;
+  }
+  .timeline-item:nth-child(odd) { flex-direction: row; }
+  .timeline-item:nth-child(even) { flex-direction: row-reverse; }
+
+  .timeline-content {
+    flex: 1;
+    background: linear-gradient(135deg, rgba(45,58,30,0.6), rgba(20,26,12,0.8));
+    border: 1px solid rgba(212,175,55,0.15);
+    padding: 1.2rem 1.4rem;
+    position: relative;
+  }
+  .timeline-item:nth-child(odd) .timeline-content { text-align: right; }
+  .timeline-item:nth-child(even) .timeline-content { text-align: left; }
+
+  .timeline-date {
+    font-family: 'Special Elite', cursive;
+    font-size: 1.4rem;
+    color: var(--soviet-red);
+    display: block;
+    margin-bottom: 0.3rem;
+  }
+  .timeline-event {
+    font-family: 'Special Elite', cursive;
+    font-size: 1rem;
+    color: var(--gold);
+    margin-bottom: 0.4rem;
+    letter-spacing: 0.04em;
+  }
+  .timeline-desc {
+    font-size: 0.85rem;
+    color: var(--aged);
+    line-height: 1.6;
+  }
+  .timeline-dot {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 14px; height: 14px;
+    background: var(--soviet-red);
+    border: 2px solid var(--gold);
+    border-radius: 50%;
+    margin-top: 1.4rem;
+    box-shadow: 0 0 12px var(--soviet-red);
+    z-index: 2;
+  }
+  .timeline-spacer { flex: 1; }
+
+  /* ══════════════════════════════════
+     MEMORIAL / ETERNAL FLAME
+  ══════════════════════════════════ */
+  #memorial {
+    background: var(--army-black);
+    padding: 5rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  #memorial::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 60% at 50% 100%, rgba(200,16,46,0.08) 0%, transparent 70%);
+  }
+
+  .flame-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 4px;
+    height: 100px;
+    margin-bottom: 2rem;
+  }
+  .flame {
+    width: 20px;
+    border-radius: 50% 50% 20% 20%;
+    transform-origin: bottom center;
+  }
+  .flame-1 { height: 80px; background: linear-gradient(to top, #d4af37, #c8102e, #ff6600); animation: flameAnim1 1.2s infinite alternate; }
+  .flame-2 { height: 100px; background: linear-gradient(to top, #d4af37, #ff4400, #ff8800); animation: flameAnim2 0.9s infinite alternate; width: 28px; }
+  .flame-3 { height: 75px; background: linear-gradient(to top, #c8102e, #d4af37, #ff5500); animation: flameAnim3 1.4s infinite alternate; }
+  .flame-4 { height: 60px; background: linear-gradient(to top, #d4af37, #cc3300); animation: flameAnim1 1.1s infinite alternate; }
+
+  @keyframes flameAnim1 {
+    from { transform: scaleX(1) scaleY(1) rotate(-2deg); opacity: 0.9; }
+    to   { transform: scaleX(0.85) scaleY(1.1) rotate(2deg); opacity: 1; }
+  }
+  @keyframes flameAnim2 {
+    from { transform: scaleX(1) scaleY(1) rotate(1deg); opacity: 1; }
+    to   { transform: scaleX(1.1) scaleY(0.95) rotate(-1deg); opacity: 0.85; }
+  }
+  @keyframes flameAnim3 {
+    from { transform: scaleX(0.9) scaleY(1) rotate(3deg); opacity: 0.8; }
+    to   { transform: scaleX(1) scaleY(1.15) rotate(-3deg); opacity: 1; }
+  }
+
+  .flame-base {
+    width: 100px; height: 12px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    margin: 0 auto 2rem;
+    border-radius: 50%;
+    box-shadow: 0 0 20px var(--gold), 0 0 40px rgba(212,175,55,0.4);
+  }
+
+  .memorial-title {
+    font-family: 'Special Elite', cursive;
+    font-size: clamp(1.6rem, 4vw, 2.8rem);
+    color: var(--cream);
+    letter-spacing: 0.1em;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 0 30px rgba(200,16,46,0.3);
+  }
+  .memorial-quote {
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    font-size: 1.2rem;
+    color: var(--gold);
+    font-style: italic;
+    line-height: 1.8;
+    border-top: 1px solid rgba(212,175,55,0.25);
+    border-bottom: 1px solid rgba(212,175,55,0.25);
+    padding: 1.2rem 0;
+  }
+  .memorial-sub {
+    font-size: 0.85rem;
+    color: var(--khaki);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  /* ══════════════════════════════════
+     FOOTER
+  ══════════════════════════════════ */
+  footer {
+    background: linear-gradient(180deg, var(--olive-dark) 0%, #080a05 100%);
+    border-top: 2px solid var(--soviet-red-dark);
+    padding: 3rem 2rem;
+    text-align: center;
+  }
+  .footer-stars {
+    font-size: 1.4rem;
+    color: var(--soviet-red);
+    letter-spacing: 0.5rem;
+    animation: starFlicker 3s infinite;
+    margin-bottom: 1rem;
+  }
+  .footer-slogan {
+    font-family: 'Special Elite', cursive;
+    font-size: 1.3rem;
+    color: var(--gold);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+  .footer-sub {
+    font-size: 0.75rem;
+    color: var(--khaki);
+    letter-spacing: 0.15em;
+  }
+  .tank-silhouette { margin: 1.5rem auto 0; opacity: 0.15; width: 200px; }
+
+  /* ══════════════════════════════════
+     RESPONSIVE
+  ══════════════════════════════════ */
+  @media (max-width: 640px) {
+    .nav-links { display: none; }
+    .timeline-line { left: 20px; }
+    .timeline-item, .timeline-item:nth-child(even) { flex-direction: column; padding-left: 50px; }
+    .timeline-dot { left: 20px; }
+    .timeline-spacer { display: none; }
+    .timeline-item:nth-child(odd) .timeline-content { text-align: left; }
+    .intro-stats { gap: 1.5rem; }
+    .soldier-silhouette { width: 140px; height: 260px; opacity: 0.07; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── NAVIGATION ─── -->
+<nav>
+  <div class="nav-logo">
+    <span class="nav-star">★</span>
+    КААРМАНДАР ЭСТЕЛИГИ
+  </div>
+  <div class="nav-links">
+    <a href="#heroes">Каармандар</a>
+    <a href="#timeline">Хронология</a>
+    <a href="#memorial">Мемориал</a>
+  </div>
+</nav>
+
+<!-- ─── HERO SECTION ─── -->
+<section id="hero">
+  <div class="hero-bg"></div>
+
+  <svg class="soldier-silhouette" viewBox="0 0 200 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="100" cy="55" rx="38" ry="22" fill="#8b8b6b"/>
+    <rect x="62" y="68" width="76" height="8" rx="4" fill="#6b6b4b"/>
+    <ellipse cx="100" cy="90" rx="24" ry="28" fill="#8b7d60"/>
+    <path d="M60 115 L100 112 L140 115 L148 240 L52 240 Z" fill="#5a6030"/>
+    <rect x="148" y="100" width="8" height="180" rx="3" fill="#4a3820" transform="rotate(-5 148 100)"/>
+    <rect x="152" y="95" width="5" height="30" rx="2" fill="#3a2810" transform="rotate(-5 152 95)"/>
+    <path d="M60 130 L30 200 L45 205 L72 145" fill="#5a6030"/>
+    <path d="M140 130 L160 180 L148 185 L132 145" fill="#5a6030"/>
+    <rect x="70" y="238" width="24" height="100" rx="6" fill="#3a4020"/>
+    <rect x="106" y="238" width="24" height="100" rx="6" fill="#3a4020"/>
+    <ellipse cx="82" cy="340" rx="20" ry="10" fill="#2a2010"/>
+    <ellipse cx="118" cy="340" rx="20" ry="10" fill="#2a2010"/>
+    <rect x="58" y="185" width="84" height="8" rx="2" fill="#3a3010"/>
+    <rect x="94" y="183" width="12" height="12" rx="1" fill="#d4af37" opacity="0.6"/>
+    <text x="92" y="58" font-size="14" fill="#c8102e" opacity="0.8">★</text>
+  </svg>
+
+  <div class="hero-content">
+    <div class="years-banner">1941 — 1945</div>
+    <span class="hero-star">★</span>
+    <h1 class="hero-title">УЛУУ АТА МЕКЕНДИК<br>СОГУШ КААРМАНДАРЫ</h1>
+    <p class="hero-subtitle">Кыргызстандын батырлары — Жеңиштин тиреги</p>
+    <div class="hero-quote">«Эч качан унутулбайт — эч качан кечирилбейт»</div>
+  </div>
+
+  <div class="scroll-hint">
+    <span>▼</span>
+    <span>ЫЛДЫЙ ЖЫЛДЫРЫҢЫЗ</span>
+  </div>
+</section>
+
+<!-- ─── INTRO ─── -->
+<section id="intro">
+  <div class="section-header">
+    <div class="section-label">★ ТАРЫХ ★</div>
+    <h2 class="section-title">Согуштун Жаратканы</h2>
+  </div>
+  <div class="intro-inner">
+    <p class="intro-text">
+      <strong>1941-жылдын 22-июнунда</strong> нацисттик Германия Советтер Союзуна кол салды.
+      Бул согуш адамзат тарыхындагы эң чоң кан төгүштүн бири болду.
+      Кыргызстандын уулдары менен кыздары <strong>Мекенди коргоо</strong> үчүн алдыңкы сапка аттанып жөнөштү.
+    </p>
+    <p class="intro-text">
+      Кыргызстандан <strong>360 000 дан ашык</strong> адам согушка чакырылды.
+      Алардын ичинен көптөгөн жоокерлер <strong>Советтер Союзунун Баатыры</strong> наамын алышты.
+      Алардын эрдиги, каны жана жаны — биздин бүгүнкү эркиндигибиздин негизи.
+    </p>
+    <div class="intro-stats">
+      <div class="stat-item">
+        <span class="stat-num">360К+</span>
+        <div class="stat-label">Согушка кеткен</div>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">73</span>
+        <div class="stat-label">СС Баатыры</div>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">4 ЖЫЛ</span>
+        <div class="stat-label">Согуштун узактыгы</div>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">1945</span>
+        <div class="stat-label">Жеңиш жылы</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── RIFLE DIVIDER ─── -->
+<div class="rifle-divider" style="background:var(--army-black); padding: 1rem 2rem;">
+  <div class="line"></div>
+  <svg width="140" height="30" viewBox="0 0 140 30" fill="none" opacity="0.6">
+    <rect x="5" y="12" width="100" height="6" rx="3" fill="#8b8b6b"/>
+    <rect x="105" y="10" width="30" height="3" rx="1" fill="#6b6b4b"/>
+    <rect x="105" y="17" width="30" height="3" rx="1" fill="#6b6b4b"/>
+    <rect x="20" y="7" width="6" height="16" rx="2" fill="#6b5030"/>
+    <rect x="40" y="9" width="4" height="12" rx="1" fill="#5a4020"/>
+    <rect x="8" y="14" width="14" height="8" rx="2" fill="#5a5040"/>
+    <rect x="3" y="13" width="8" height="4" rx="1" fill="#6b6b4b"/>
+  </svg>
+  <div class="line"></div>
+</div>
+
+<!-- ─── HEROES GALLERY ─── -->
+<section id="heroes">
+  <div class="section-header">
+    <div class="section-label">★ КААРМАНДАР ★</div>
+    <h2 class="section-title">Баатырлар Галереясы</h2>
+  </div>
+  <div class="heroes-grid">
+
+    <div class="hero-card">
+      <div class="hero-photo">
+        <svg class="hero-photo-icon" viewBox="0 0 80 80" fill="none">
+          <circle cx="40" cy="28" r="16" fill="#5a6030" opacity="0.5"/>
+          <path d="M10 72 Q40 48 70 72" fill="#4a5020" opacity="0.5"/>
+          <text x="26" y="22" font-size="22" fill="#c8102e" opacity="0.7">★</text>
+        </svg>
+        <div class="hero-photo-overlay"></div>
+        <svg class="hero-medal" viewBox="0 0 36 36">
+          <circle cx="18" cy="18" r="14" fill="#d4af37" opacity="0.3" stroke="#d4af37" stroke-width="1"/>
+          <text x="10" y="23" font-size="14" fill="#d4af37">★</text>
+        </svg>
+      </div>
+      <div class="hero-info">
+        <div class="hero-name">Чолпонбай Тулебердиев</div>
+        <div class="hero-years">1922 — 1942</div>
+        <div class="hero-rank">Красноармеец</div>
+        <p class="hero-bio">Аскердик тапшырманы аткарып жатканда, душмандын пулемётун өз денеси менен жаап, бөлүгүн куткарып калды. Анын эрдиги тарыхта түбөлүккө калды.</p>
+        <div class="hero-award">★ Советтер Союзунун Баатыры</div>
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <div class="hero-photo">
+        <svg class="hero-photo-icon" viewBox="0 0 80 80" fill="none">
+          <circle cx="40" cy="28" r="16" fill="#5a6030" opacity="0.5"/>
+          <path d="M10 72 Q40 48 70 72" fill="#4a5020" opacity="0.5"/>
+          <text x="26" y="22" font-size="22" fill="#c8102e" opacity="0.7">★</text>
+        </svg>
+        <div class="hero-photo-overlay"></div>
+        <svg class="hero-medal" viewBox="0 0 36 36">
+          <circle cx="18" cy="18" r="14" fill="#d4af37" opacity="0.3" stroke="#d4af37" stroke-width="1"/>
+          <text x="10" y="23" font-size="14" fill="#d4af37">★</text>
+        </svg>
+      </div>
+      <div class="hero-info">
+        <div class="hero-name">Дүйшенкул Шопоков</div>
+        <div class="hero-years">1915 — 1941</div>
+        <div class="hero-rank">Рядовой</div>
+        <p class="hero-bio">Москва жанындагы салгылашта душмандын амбразурасын өз денеси менен жаап, жеңишке баа жеткис салым кошту. Кыргызстандын биринчи баатыры.</p>
+        <div class="hero-award">★ Советтер Союзунун Баатыры</div>
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <div class="hero-photo">
+        <svg class="hero-photo-icon" viewBox="0 0 80 80" fill="none">
+          <circle cx="40" cy="28" r="16" fill="#5a6030" opacity="0.5"/>
+          <path d="M10 72 Q40 48 70 72" fill="#4a5020" opacity="0.5"/>
+          <text x="26" y="22" font-size="22" fill="#c8102e" opacity="0.7">★</text>
+        </svg>
+        <div class="hero-photo-overlay"></div>
+        <svg class="hero-medal" viewBox="0 0 36 36">
+          <circle cx="18" cy="18" r="14" fill="#d4af37" opacity="0.3" stroke="#d4af37" stroke-width="1"/>
+          <text x="10" y="23" font-size="14" fill="#d4af37">★</text>
+        </svg>
+      </div>
+      <div class="hero-info">
+        <div class="hero-name">Алексей Скурлатов</div>
+        <div class="hero-years">1922 — 2013</div>
+        <div class="hero-rank">Байланышчы сапёр</div>
+        <p class="hero-bio">Болгариянын Пловдив шаарында «Алёша» аттуу советтик аскердин прототипи болгон. Кыргызстандан чыккан дагы бир баатыр жоокер.</p>
+        <div class="hero-award">★ Жеңиш медалы</div>
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <div class="hero-photo">
+        <svg class="hero-photo-icon" viewBox="0 0 80 80" fill="none">
+          <circle cx="40" cy="28" r="16" fill="#5a6030" opacity="0.5"/>
+          <path d="M10 72 Q40 48 70 72" fill="#4a5020" opacity="0.5"/>
+          <text x="26" y="22" font-size="22" fill="#c8102e" opacity="0.7">★</text>
+        </svg>
+        <div class="hero-photo-overlay"></div>
+        <svg class="hero-medal" viewBox="0 0 36 36">
+          <circle cx="18" cy="18" r="14" fill="#d4af37" opacity="0.3" stroke="#d4af37" stroke-width="1"/>
+          <text x="10" y="23" font-size="14" fill="#d4af37">★</text>
+        </svg>
+      </div>
+      <div class="hero-info">
+        <div class="hero-name">Исмаил Таранчиев</div>
+        <div class="hero-years">1918 — 1944</div>
+        <div class="hero-rank">Лейтенант</div>
+        <p class="hero-bio">Ленинград блокадасын жарып өткөн операцияда баатырдык көрсөтүп, взводун оор кырдаалдан алып чыкты. Өмүрүн Мекен үчүн берди.</p>
+        <div class="hero-award">★ Кызыл Жылдыз ордени</div>
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <div class="hero-photo">
+        <svg class="hero-photo-icon" viewBox="0 0 80 80" fill="none">
+          <circle cx="40" cy="28" r="16" fill="#5a6030" opacity="0.5"/>
+          <path d="M10 72 Q40 48 70 72" fill="#4a5020" opacity="0.5"/>
+          <text x="26" y="22" font-size="22" fill="#c8102e" opacity="0.7">★</text>
+        </svg>
+        <div class="hero-photo-overlay"></div>
+        <svg class="hero-medal" viewBox="0 0 36 36">
+          <circle cx="18" cy="18" r="14" fill="#d4af37" opacity="0.3" stroke="#d4af37" stroke-width="1"/>
+          <text x="10" y="23" font-size="14" fill="#d4af37">★</text>
+        </svg>
+      </div>
+      <div class="hero-info">
+        <div class="hero-name">Абдраим Шаршеев</div>
+        <div class="hero-years">1920 — 1945</div>
+        <div class="hero-rank">Старшина</div>
+        <p class="hero-bio">Берлин операциясына катышып, Рейхстагга советтик туу сайган топтун курамында болгон. Жеңишти өз көзү менен көрдү.</p>
+        <div class="hero-award">★ Советтер Союзунун Баатыры</div>
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <div class="hero-photo">
+        <svg class="hero-photo-icon" viewBox="0 0 80 80" fill="none">
+          <circle cx="40" cy="28" r="16" fill="#5a6030" opacity="0.5"/>
+          <path d="M10 72 Q40 48 70 72" fill="#4a5020" opacity="0.5"/>
+          <text x="26" y="22" font-size="22" fill="#c8102e" opacity="0.7">★</text>
+        </svg>
+        <div class="hero-photo-overlay"></div>
+        <svg class="hero-medal" viewBox="0 0 36 36">
+          <circle cx="18" cy="18" r="14" fill="#d4af37" opacity="0.3" stroke="#d4af37" stroke-width="1"/>
+          <text x="10" y="23" font-size="14" fill="#d4af37">★</text>
+        </svg>
+      </div>
+      <div class="hero-info">
+        <div class="hero-name">Жамал Сейиткалиева</div>
+        <div class="hero-years">1921 — 1999</div>
+        <div class="hero-rank">Медицина санитарки</div>
+        <p class="hero-bio">Майдандагы медициналык кызматта жараланган 200дөн ашык жоокерди куткарган. Аялдардын эрдигинин символу.</p>
+        <div class="hero-award">★ Эмгек Кызыл Туу ордени</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── RIFLE DIVIDER ─── -->
+<div class="rifle-divider" style="background:linear-gradient(var(--army-black), var(--olive-dark)); padding: 1rem 2rem;">
+  <div class="line"></div>
+  <svg width="140" height="30" viewBox="0 0 140 30" fill="none" opacity="0.6">
+    <rect x="5" y="12" width="100" height="6" rx="3" fill="#8b8b6b"/>
+    <rect x="105" y="10" width="30" height="3" rx="1" fill="#6b6b4b"/>
+    <rect x="105" y="17" width="30" height="3" rx="1" fill="#6b6b4b"/>
+    <rect x="20" y="7" width="6" height="16" rx="2" fill="#6b5030"/>
+    <rect x="40" y="9" width="4" height="12" rx="1" fill="#5a4020"/>
+    <rect x="8" y="14" width="14" height="8" rx="2" fill="#5a5040"/>
+    <rect x="3" y="13" width="8" height="4" rx="1" fill="#6b6b4b"/>
+  </svg>
+  <div class="line"></div>
+</div>
+
+<!-- ─── TIMELINE ─── -->
+<section id="timeline">
+  <div class="section-header">
+    <div class="section-label">★ ХРОНОЛОГИЯ ★</div>
+    <h2 class="section-title">1941 — 1945</h2>
+  </div>
+  <div class="timeline-container">
+    <div class="timeline-line"></div>
+
+    <div class="timeline-item">
+      <div class="timeline-content">
+        <span class="timeline-date">22.06.1941</span>
+        <div class="timeline-event">Согуштун башталышы</div>
+        <p class="timeline-desc">Германия СССР га кол салды. Кыргызстандан биринчи жоокерлер алдыңкы сапка аттанды.</p>
+      </div>
+      <div class="timeline-dot"></div>
+      <div class="timeline-spacer"></div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-spacer"></div>
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <span class="timeline-date">1941-1942</span>
+        <div class="timeline-event">Москва Салгылашы</div>
+        <p class="timeline-desc">Кыргызстандык Дүйшенкул Шопоков Москва жанында амбразурасын жаап, эрдик көрсөттү.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-content">
+        <span class="timeline-date">1942-1943</span>
+        <div class="timeline-event">Сталинград Салгылашы</div>
+        <p class="timeline-desc">Тарыхтагы эң чоң жер согушу. Кыргызстандык миңдеген жоокерлер катышты.</p>
+      </div>
+      <div class="timeline-dot"></div>
+      <div class="timeline-spacer"></div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-spacer"></div>
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <span class="timeline-date">1942</span>
+        <div class="timeline-event">Ч. Тулебердиев — эрдик</div>
+        <p class="timeline-desc">Чолпонбай Тулебердиев душмандын пулемётун жаап, бөлүгүн куткарды. СС Баатыры наамы берилди.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-content">
+        <span class="timeline-date">1944</span>
+        <div class="timeline-event">Ленинград блокадасы бузулду</div>
+        <p class="timeline-desc">900 күн уланган блокада акыры бузулду. Кыргызстандык жоокерлер операцияда активдүү катышты.</p>
+      </div>
+      <div class="timeline-dot"></div>
+      <div class="timeline-spacer"></div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-spacer"></div>
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <span class="timeline-date">02.05.1945</span>
+        <div class="timeline-event">Берлин алынды</div>
+        <p class="timeline-desc">Советтик жоокерлер Берлинди алып, Рейхстагга кызыл туу сайышты. Жеңиш жакындады.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-content">
+        <span class="timeline-date">09.05.1945</span>
+        <div class="timeline-event">★ ЖЕҢИШ КҮНҮ ★</div>
+        <p class="timeline-desc">Улуу Ата Мекендик Согуш аяктады. Миллиондогон курмандыктардын баасына жеңиш жеңилди!</p>
+      </div>
+      <div class="timeline-dot" style="background:var(--gold);box-shadow:0 0 20px var(--gold);width:20px;height:20px;margin-top:1.2rem;"></div>
+      <div class="timeline-spacer"></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── MEMORIAL ─── -->
+<section id="memorial">
+  <div class="section-header">
+    <div class="section-label">★ МЕМОРИАЛ ★</div>
+    <h2 class="section-title">Мәңгүлүк Отту</h2>
+  </div>
+
+  <div class="flame-container">
+    <div class="flame flame-4"></div>
+    <div class="flame flame-1"></div>
+    <div class="flame flame-2"></div>
+    <div class="flame flame-3"></div>
+    <div class="flame flame-1" style="width:16px;height:65px;"></div>
+  </div>
+  <div class="flame-base"></div>
+
+  <h2 class="memorial-title">Алардын Эрдиги Түбөлүк</h2>
+  <div class="memorial-quote">
+    «Биз сиздерди эстейбиз, баатырлар.<br>
+    Силердин каныңар менен жазылган<br>
+    бул тарых — биздин жашообуздун негизи.»
+  </div>
+  <p class="memorial-sub">1941 — 1945 ★ Эч качан унутулбайт</p>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-stars">★ ★ ★ ★ ★</div>
+  <div class="footer-slogan">Эч качан унутулбайт</div>
+  <div class="footer-sub">Кыргызстандын Улуу Ата Мекендик Согуш Баатырларына арналган</div>
+
+  <svg class="tank-silhouette" viewBox="0 0 200 70" fill="none">
+    <rect x="20" y="30" width="140" height="30" rx="6" fill="#8b8b6b"/>
+    <rect x="40" y="20" width="90" height="20" rx="4" fill="#6b6b4b"/>
+    <rect x="130" y="22" width="55" height="6" rx="3" fill="#5a5a3a"/>
+    <circle cx="38" cy="62" r="12" fill="#4a4a2a" stroke="#5a5a3a" stroke-width="2"/>
+    <circle cx="70" cy="62" r="12" fill="#4a4a2a" stroke="#5a5a3a" stroke-width="2"/>
+    <circle cx="102" cy="62" r="12" fill="#4a4a2a" stroke="#5a5a3a" stroke-width="2"/>
+    <circle cx="134" cy="62" r="12" fill="#4a4a2a" stroke="#5a5a3a" stroke-width="2"/>
+    <circle cx="162" cy="62" r="12" fill="#4a4a2a" stroke="#5a5a3a" stroke-width="2"/>
+    <circle cx="38" cy="62" r="5" fill="#3a3a1a"/>
+    <circle cx="70" cy="62" r="5" fill="#3a3a1a"/>
+    <circle cx="102" cy="62" r="5" fill="#3a3a1a"/>
+    <circle cx="134" cy="62" r="5" fill="#3a3a1a"/>
+    <circle cx="162" cy="62" r="5" fill="#3a3a1a"/>
+    <text x="75" y="38" font-size="10" fill="#c8102e" opacity="0.5">★</text>
+  </svg>
+</footer>
+
+</body>
+</html>
